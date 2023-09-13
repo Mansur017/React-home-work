@@ -46,7 +46,7 @@ return(
             <div className={`sms-${message.side}`} >
                  <p>{message.text}</p>
                 <span>{message.author}</span>
-                <button onClick={() => { deleteMessage(index) }} className="btn">X</button>
+                <button onClick={deleteMessage} className="btn">X</button>
             </div>
         </ Fragment>
         )
