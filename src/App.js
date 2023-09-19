@@ -1,60 +1,32 @@
 import React, { useState } from "react";
-import Messages from "./Messages"
+import TodoForm from "./TodoForm";
+import Todos from "./Todos";
 
 
 function App() {
 
-
-  const [todos, setTodos] = useState([
-    {
-      text: "Html"
-    },    
-    {
-      text: "Html"
-    },    
-    {
-      text: "Html"
-    },
-  ])
+    const [todos, setTodos] = useState([
+        "Изучить JavaScript",
+        "Изучить паттерны проектирования",
+        "Redux (redux-observable, redux-saga)"
+    ])
 
 
-const [text, setText] = useState("")
-
-
-function handleChange(e) {
-  setText(e.target.value)
-  
-}
-function handleBtn(e){
-  setText("")
-  setTodos([
-    ...todos,
-    {
-    text: text
-
-    }])
-}
-
-  return (
-    <div className="container">
-          <>
-      <input placeholder="text"   value={text}   onChange={handleChange}/>
-      <button  onClick={handleBtn} > btn</button>
-          </>
-      {
-        todos.map( (item , index) => {
-          return(
-            <div key={index}> 
-              {item.text}
-            </div>
-          )
-        })
-      }
-
-    </div>
-
-  )
-    
+    return(
+        <div className="App">
+            <header>
+                <h1>Количество задач № {todos.length} </h1>
+            </header>  
+            <Todos
+                todos={todos}
+                setTodos={setTodos}
+            />
+            <TodoForm
+               todos={todos}
+               setTodos={setTodos}
+            />
+        </div>
+    )
 
 }
 
